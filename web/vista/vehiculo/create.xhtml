@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <ui:composition>
+        <h:form id="formAdd">
+            <h:panelGrid columns="2">
+
+                <p:outputLabel value="Codigo"/>
+                <p:inputText value="#{vehiculoC.vehiculo.cod_Ve}" placeholder="CodigoVehiculo"/>
+
+                <p:outputLabel value="Modelo"/>
+                <p:inputText value="#{vehiculoC.vehiculo.modelo_Ve}" placeholder="Modelo"/>
+
+                <p:outputLabel value="Marca"/>
+                <p:inputText value="#{vehiculoC.vehiculo.marca_Ve}" placeholder="Marca"/>
+
+            </h:panelGrid>
+
+            <p:commandButton update="formAdd :formLista:tablaVehiculo" value="Agregar" actionListener="#{vehiculoC.addVehiculo()}"/>
+
+        </h:form>
+    </ui:composition>
+</html>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>TABLA PERSONAL</title>
+    </h:head>
+
+
+    <h:body>
+        <ui:include src="create.xhtml"/>
+        <h:form id="formLista">
+
+            <p:commandButton value="Listar" 
+                             actionListener="#{personalesC.listarPersonales()}" 
+                             update="tablaPersonal"/>
+
+            <p:dataTable id="tablaPersonal" 
+                         value="#{personalesC.listaPersonales}" 
+                         var="personal"
+                         selectionMode="single"
+                         selection="#{personalesC.personales}"
+                         rowKey="#{personal.cod_Per}">
+
+                <p:column headerText="CODIGO">
+                    <p:outputLabel value="#{personal.cod_Per}"/>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <p:outputLabel value="#{personal.nom_Per}"/>
+                </p:column>
+                <p:column headerText="Apellido">
+                    <p:outputLabel value="#{personal.ape_Per}"/>
+                </p:column>
+                <p:column headerText="DNI">
+                    <p:outputLabel value="#{personal.dni_Per}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:contextMenu for="tablaPersonal">
+                <p:menuitem value="editar"  update="formDialog" oncomplete="PF('editarPersonal').show()"/>
+                <p:menuitem value="deshabilitar"  update="tablaPersonal"  actionListener="#{personalesC.deshabilitarPersonales()}">
+                    <p:confirm header="Deshabilitar" message="Estas seguro?" icon="ui-icon-alert" />
+                </p:menuitem>
+            </p:contextMenu>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </h:form>
+        <ui:include src="update.xhtml"/>
+        <script src="../../resources/js/jsfcrud.js" type="text/javascript"></script>
+    </h:body>
+
+
+</html>

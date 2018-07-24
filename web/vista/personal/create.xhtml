@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+>
+    <ui:composition>
+        <h:form id="formAdd">
+            <h:panelGrid columns="2">
+
+                <p:outputLabel value="Codigo"/>
+                <p:inputText value="#{personalesC.personales.cod_Per}" placeholder="CodigoPersonal"/>
+
+                <p:outputLabel value="NombrePersonal"/>
+                <p:inputText value="#{personalesC.personales.nom_Per}" placeholder="NombrePersonal"/>
+
+                <p:outputLabel value="ApellidoPersonal"/>
+                <p:inputText value="#{personalesC.personales.ape_Per}" placeholder="ApellidoPersonal"/>
+
+                <p:outputLabel value="DniPersonal"/>
+                <p:inputText value="#{personalesC.personales.dni_Per}" placeholder="DniPersonal" maxlength="8"/>
+
+            </h:panelGrid>
+
+            <p:commandButton update="formAdd :formLista:tablaPersonal" value="Agregar" actionListener="#{personalesC.addPersonales()}"/>
+
+        </h:form>
+    </ui:composition>
+</html>
